@@ -1,43 +1,70 @@
-import pyautogui
-import numpy as np
-from PIL import Image
-from playsound import playsound
 import cv2
+import numpy as np
+import os
+import pyautogui
+import pystray
+import sys
+import threading
+import time
+from PIL import Image, ImageDraw
+from playsound import playsound
+from pystray import MenuItem as item
 
 def find_image_on_screen(image_path, threshold=0.8):
-    # Take a screenshot
     screenshot = pyautogui.screenshot()
     screenshot = np.array(screenshot).astype('float32')
-
-    # Load the image file
     needle = Image.open(image_path)
     needle = np.array(needle).astype('float32')
 
-    # Ensure both images have the same number of dimensions
     if len(screenshot.shape) != len(needle.shape):
         print("The dimensions of the screenshot and the needle image do not match.")
         return []
 
-    # Use template Matching to find the image in the screenshot
     result = cv2.matchTemplate(screenshot, needle, cv2.TM_CCOEFF_NORMED)
-
-    # Get the locations of the image in the screenshot
     locations = np.where(result >= threshold)
     locations = list(zip(*locations[::-1]))
 
     return locations
 
 def play_sound_if_image_found(image_path, sound_path, threshold=0.8):
-    locations = find_image_on_screen(image_path, threshold)
+    print(f"Image path: {image_path}")
 
-    if locations:
-        print(f"Image found at: {locations}")
-        playsound(sound_path)
-    else:
-        print("Image not found")
+    try:
+        with open(image_path, 'rb') as f:
+            print(f"Successfully opened {image_path}")
+    except Exception as e:
+        print(f"Failed to open {image_path}: {e}")
+
+    while True:
+        locations = find_image_on_screen(image_path, threshold)
+
+        if locations:
+            playsound(sound_path)
+            break
+
+        time.sleep(1)
 
 def exit_action(icon, item):
     icon.stop()
+    os._exit(0)
 
-# Usage
-play_sound_if_image_found('Images/neutral24.bmp', 'Sounds/sonar.wav', threshold=0.8)
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+image = Image.new('RGB', (64, 64), color='red')
+draw = ImageDraw.Draw(image)
+draw.rectangle(
+    [(5, 5), (64 - 10, 64 - 10)],
+    fill='black',
+    outline='blue'
+)
+
+icon = pystray.Icon("test_icon", image, "My System Tray Icon", menu=pystray.Menu(item('Exit', exit_action)))
+threading.Thread(target=icon.run).start()  # Start the system tray icon in a separate thread
+image_path = resource_path('Images/neutral24.bmp')
+sound_path = resource_path('Sounds/sonar.wav')
+threading.Thread(target=play_sound_if_image_found, args=(image_path, sound_path, 0.8)).start()
