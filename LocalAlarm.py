@@ -15,34 +15,27 @@ def find_image_on_screen(image_path, threshold=0.8):
     screenshot = np.array(screenshot).astype('float32')
     needle = Image.open(image_path)
     needle = np.array(needle).astype('float32')
-
     if len(screenshot.shape) != len(needle.shape):
         print("The dimensions of the screenshot and the needle image do not match.")
         return []
-
     result = cv2.matchTemplate(screenshot, needle, cv2.TM_CCOEFF_NORMED)
     locations = np.where(result >= threshold)
     locations = list(zip(*locations[::-1]))
-
     return locations
 
-def play_sound_if_image_found(image_path, sound_path, threshold=0.8):
-    print(f"Image path: {image_path}")
-
-    try:
-        with open(image_path, 'rb') as f:
-            print(f"Successfully opened {image_path}")
-    except Exception as e:
-        print(f"Failed to open {image_path}: {e}")
-
-    while True:
-        locations = find_image_on_screen(image_path, threshold)
-
-        if locations:
-            playsound(sound_path)
-            break
-
-        time.sleep(1)
+def play_sound_if_image_found(image_paths, sound_path, threshold=0.8):
+    for image_path in image_paths:
+        print(f"Image path: {image_path}")
+        try:
+            with open(image_path, 'rb') as f:
+                print(f"Successfully opened {image_path}")
+        except Exception as e:
+            print(f"Failed to open {image_path}: {e}")
+        while True:
+            locations = find_image_on_screen(image_path, threshold)
+            if locations:
+                playsound(sound_path)
+            time.sleep(1)
 
 def exit_action(icon, item):
     icon.stop()
@@ -64,7 +57,7 @@ draw.rectangle(
 )
 
 icon = pystray.Icon("test_icon", image, "My System Tray Icon", menu=pystray.Menu(item('Exit', exit_action)))
-threading.Thread(target=icon.run).start()  # Start the system tray icon in a separate thread
-image_path = resource_path('Images/neutral24.bmp')
+image_paths = [resource_path('Images/Neutral24BitNormal.bmp'), resource_path('Images/Neutral24BitCompact.bmp')]
 sound_path = resource_path('Sounds/sonar.wav')
-threading.Thread(target=play_sound_if_image_found, args=(image_path, sound_path, 0.8)).start()
+threading.Thread(target=icon.run).start()
+threading.Thread(target=play_sound_if_image_found, args=(image_paths, sound_path, 0.8)).start()

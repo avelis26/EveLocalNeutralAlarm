@@ -4,7 +4,11 @@ a = Analysis(
     ['LocalAlarm.py'],
     pathex=[],
     binaries=[],
-    datas=[('Images/neutral24.bmp', 'Images'), ('Sounds/sonar.wav', 'Sounds')],
+    datas=[
+        ('Images/Neutral24BitNormal.bmp', 'Images'),
+        ('Images/Neutral24BitCompact.bmp', 'Images'),
+        ('Sounds/sonar.wav', 'Sounds')
+    ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
