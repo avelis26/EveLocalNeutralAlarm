@@ -1,4 +1,5 @@
 ![GoonSwarm Logo](Images/GoonLogo.png)
+<img src="Images/GoonLogo.png" width="50%" height="50%">
 
 # Description
 While playing Eve Online and ratting in nullsec, sure would be nice if ships from over a thousand years in the future, could warn you when an unknown contact enters the system, much like our ships today can do :P  
