@@ -16,3 +16,4 @@ pip install pyinstaller
 
 # Compile
 `pyinstaller LocalAlarm.spec`
+Executable can be found at `EveLocalNeutralAlarm\dist\LocalAlarm.exe`
