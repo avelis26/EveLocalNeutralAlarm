@@ -1,4 +1,3 @@
-![GoonSwarm Logo](Images/GoonLogo.png)
 <img src="Images/GoonLogo.png" width="50%" height="50%">
 
 # Description
