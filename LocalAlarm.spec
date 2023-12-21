@@ -5,6 +5,7 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
+        ('Images/GoonLogo.png', 'Images'),
         ('Images/Neutral24BitNormal.bmp', 'Images'),
         ('Images/Neutral24BitCompact.bmp', 'Images'),
         ('Sounds/sonar.wav', 'Sounds')

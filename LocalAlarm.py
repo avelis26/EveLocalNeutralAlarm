@@ -6,7 +6,7 @@ import pystray
 import sys
 import threading
 import time
-from PIL import Image, ImageDraw
+from PIL import Image
 from playsound import playsound
 from pystray import MenuItem as item
 
@@ -48,15 +48,8 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
-image = Image.new('RGB', (64, 64), color='red')
-draw = ImageDraw.Draw(image)
-draw.rectangle(
-    [(5, 5), (64 - 10, 64 - 10)],
-    fill='black',
-    outline='blue'
-)
-
-icon = pystray.Icon("test_icon", image, "My System Tray Icon", menu=pystray.Menu(item('Exit', exit_action)))
+icon = Image.open(resource_path('Images/GoonLogo.png'))
+icon = pystray.Icon("test_icon", icon, "My System Tray Icon", menu=pystray.Menu(item('Exit', exit_action)))
 image_paths = [resource_path('Images/Neutral24BitNormal.bmp'), resource_path('Images/Neutral24BitCompact.bmp')]
 sound_path = resource_path('Sounds/sonar.wav')
 threading.Thread(target=icon.run).start()
