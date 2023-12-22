@@ -1,4 +1,4 @@
-<p align="center"><img src="Images/GoonLogo.png" width="18%" height="18%"></p>
+<p align="center"><img src="Images/GoonLogo.png" width="26%" height="26%"></p>
 
 # Description
 While playing Eve Online and ratting in nullsec, sure would be nice if ships from over a thousand years in the future, could warn you when an unknown contact enters the system, much like our ships today can do :P  
