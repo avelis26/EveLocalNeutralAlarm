@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Images/GoonLogo.png" width="50%" height="50%">
+  <img src="Images/GoonLogo.png" width="25%" height="25%">
 </p>
 
 # Description
