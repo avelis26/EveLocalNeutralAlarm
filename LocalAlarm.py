@@ -49,7 +49,7 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 icon = Image.open(resource_path('Images/GoonLogo.png'))
-icon = pystray.Icon("test_icon", icon, "My System Tray Icon", menu=pystray.Menu(item('Exit', exit_action)))
+icon = pystray.Icon("goon_icon", icon, "EveLocalNeutralAlarm", menu=pystray.Menu(item('Exit', exit_action)))
 image_paths = [resource_path('Images/Neutral24BitNormal.bmp'), resource_path('Images/Neutral24BitCompact.bmp')]
 sound_path = resource_path('Sounds/sonar.wav')
 threading.Thread(target=icon.run).start()
