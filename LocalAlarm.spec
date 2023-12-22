@@ -1,5 +1,37 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+from PyInstaller.utils.win32.versioninfo import VSVersionInfo, FixedFileInfo, StringStruct, StringTable, StringFileInfo, VarStruct, VarFileInfo
+
+version_info = VSVersionInfo(
+    ffi=FixedFileInfo(
+        filevers=(0, 9, 2, 0),
+        prodvers=(0, 9, 2, 0),
+        mask=0x3f,
+        flags=0x0,
+        OS=0x4,
+        fileType=0x1,
+        subtype=0x0,
+        date=(0, 0)
+    ),
+    kids=[
+        StringFileInfo([
+            StringTable(
+                '040904B0',
+                [
+                    StringStruct('CompanyName', 'Graham Pinkston'),
+                    StringStruct('FileDescription', 'Eve Local Neutral Alarm'),
+                    StringStruct('FileVersion', '0.9.2.0'),
+                    StringStruct('InternalName', 'Graham Pinkston'),
+                    StringStruct('OriginalFilename', 'LocalAlarm.exe'),
+                    StringStruct('ProductName', 'Eve Local Neutral Alarm'),
+                    StringStruct('ProductVersion', '0.9.2.0')
+                ]
+            )
+        ]),
+        VarFileInfo([VarStruct('Translation', [1033, 1200])])
+    ]
+)
+
 a = Analysis(
     ['LocalAlarm.py'],
     pathex=[],
@@ -38,4 +70,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    version=version_info,
 )
