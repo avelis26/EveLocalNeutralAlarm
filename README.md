@@ -1,6 +1,6 @@
 <p align="center"><img src="Images/GoonLogo.png" width="26%" height="26%"></p>
 
-- <code style="color : red">FAILS TO ALARM AFTER X AMOUNT OF TIME - DON'T TRUST YET - W.I.P.</code>
+- $${\color{red}FAILS TO ALARM AFTER X AMOUNT OF TIME - DON'T TRUST YET - W.I.P.}$$
 
 # Description
 While playing Eve Online and ratting in nullsec, sure would be nice if ships from over a thousand years in the future, could warn you when an unknown contact enters the system, much like our ships today can do :P  
@@ -9,7 +9,7 @@ Right click on the system tray icon and select exit to terminate the program.
 Tested on Windows 10.
 
 # Dependencies
-- <code style="color : orange">pyinstaller v6 creates a false positive for malware!</code>
+- $${\color{red}pyinstaller v6 creates a false positive for malware!}$$
 ```pip install pyautogui
 pip install numpy
 pip install pillow
