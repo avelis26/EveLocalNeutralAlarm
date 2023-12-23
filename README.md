@@ -1,6 +1,7 @@
 <p align="center"><img src="Images/GoonLogo.png" width="26%" height="26%"></p>
 
 $\textcolor{red}{\textsf{FAILS TO ALARM AFTER X AMOUNT OF TIME - DON'T TRUST YET - W.I.P.}}$
+$\textcolor{orange}{\textsf{Need to add other non-blue logo's. Currently only looks for the grey neutral logo.}}$
 
 # Description
 While playing Eve Online and ratting in nullsec, sure would be nice if ships from over a thousand years in the future, could warn you when an unknown contact enters the system, much like our ships today can do :P  
