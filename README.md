@@ -7,7 +7,7 @@ $\textcolor{orange}{\textsf{Need to add other non-blue logo's. Currently only lo
 While playing Eve Online and ratting in nullsec, sure would be nice if ships from over a thousand years in the future, could warn you when an unknown contact enters the system, much like our ships today can do :P  
 This program opens to the system tray, takes a screenshot once per second, looks for the neutral logo, and sounds an alarm (sonar sound) when the logo is found.  
 Right click on the system tray icon and select exit to terminate the program.  
-Tested on Windows 10.
+Tested on single Windows 10 client at 1920x1080 resolution. More testing is needed.
 
 # Dependencies
 $\textcolor{orange}{\textsf{pyinstaller v6 creates a false positive for malware!}}$
