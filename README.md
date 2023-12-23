@@ -9,7 +9,7 @@ Right click on the system tray icon and select exit to terminate the program.
 Tested on Windows 10.
 
 # Dependencies
-$\textcolor{red}{\textsf{pyinstaller v6 creates a false positive for malware!}}$
+$\textcolor{orange}{\textsf{pyinstaller v6 creates a false positive for malware!}}$
 ```pip install pyautogui
 pip install numpy
 pip install pillow
